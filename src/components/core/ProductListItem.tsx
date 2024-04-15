@@ -1,18 +1,18 @@
 import Product from "@/models/Product.ts";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.tsx";
+import { deleteProduct } from "@/services/apiFacade.ts";
 
 
 type Props = {
 	product: Product
+	handleDelete: (productId: number) => void;
 }
 
-export default function ProductListItem({product}: Props) {
+export default function ProductListItem({product, handleDelete}: Props) {
 	const navigate = useNavigate();
 
-	const handleDelete = () => {
-		
-	}
+
 
 	return (
 		<div className={"min-w-56 bg-green-500 px-4"}>
@@ -25,7 +25,7 @@ export default function ProductListItem({product}: Props) {
 				<Button>
 					Edit
 				</Button>
-				<Button onClick={handleDelete}>
+				<Button onClick={() => handleDelete(product.id)}>
 					Delete
 				</Button>
 			</div>

@@ -1,7 +1,7 @@
 
 
 
-export function makeOptions(method: string, body: object | null, authRequired?: boolean): RequestInit {
+export function makeOptions(method: string, body?: object, authRequired?: boolean): RequestInit {
 	const headers = new Headers();
 	headers.append("Content-type", "application/json");
 	headers.append("Accept", "application/json");

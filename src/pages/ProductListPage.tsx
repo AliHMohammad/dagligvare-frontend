@@ -21,7 +21,7 @@ export default function ProductListPage() {
 	return (
 		<>
 			<h1 className={"text-center"}>Products</h1>
-			<ProductList products={products}/>
+			<ProductList products={products} setProducts={setProducts}/>
 
 		</>
 	)

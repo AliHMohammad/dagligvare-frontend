@@ -24,6 +24,11 @@ async function getProducts(name?: string): Promise<Product[]> {
 	return await fetch(url).then(handleHttpErrors);
 }
 
+async function deleteProduct(id: number): Promise<Product> {
+	const options = makeOptions("DELETE");
+	return await fetch(`${PRODUCTS_URL}/${id}`, options).then(handleHttpErrors);
+}
 
 
-export {getProducts}
+
+export {getProducts, deleteProduct}
