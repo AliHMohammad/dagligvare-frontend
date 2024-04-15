@@ -10,18 +10,12 @@ export default function NavHeader() {
 			<div className={"bg-gray-300 py-5"}>
 				<h1 className={"text-center font-bold text-4xl"}>Dagligvare - Ali Mohammad</h1>
 			</div>
-			<nav className={"flex flex-wrap gap-3 bg-red-300 p-2"}>
+			<nav className={"flex flex-wrap gap-7 bg-red-300 p-2"}>
 				<NavLink to={"/"}>
 					Products
 				</NavLink>
-				<NavLink to={"/"}>
-					Products
-				</NavLink>
-				<NavLink to={"/"}>
-					Products
-				</NavLink>
-				<NavLink to={"/"}>
-					Products
+				<NavLink to={"/deliveries"}>
+					Deliveries
 				</NavLink>
 			</nav>
 		</>
