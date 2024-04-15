@@ -1,8 +1,7 @@
 import Product from "@/models/Product.ts";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.tsx";
-import { deleteProduct } from "@/services/apiFacade.ts";
-import { useToast } from "@/components/ui/use-toast.ts";
+
 
 
 type Props = {
@@ -13,10 +12,14 @@ type Props = {
 export default function ProductListItem({product, handleDelete}: Props) {
 	const navigate = useNavigate();
 
+	const handleClick = () => {
+		navigate(`${product.id}`)
+	}
+
 	return (
-		<div className={"min-w-56 bg-green-500 px-4"}>
+		<div className={"min-w-56 bg-green-500 p-4 flex flex-col gap-10 "} >
 			<div className={"flex flex-col items-center"}>
-				<h2>{product.name}</h2>
+				<h2 className={"cursor-pointer font-bold"} onClick={() => handleClick()} >{product.name}</h2>
 				<h2>{product.price} kr.</h2>
 			</div>
 

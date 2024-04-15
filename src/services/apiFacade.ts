@@ -8,7 +8,11 @@ const API_URL = "http://localhost:8080"
 const PRODUCTS_URL = API_URL + "/products"
 
 
-
+export type ProductRequest = {
+	name: string,
+	price: number,
+	weightInGrams: number
+}
 
 /*
 async function deleteRecipe(id: number): Promise<Recipe> {
@@ -29,6 +33,20 @@ async function deleteProduct(id: number): Promise<Product> {
 	return await fetch(`${PRODUCTS_URL}/${id}`, options).then(handleHttpErrors);
 }
 
+async function createProduct(newProduct: ProductRequest): Promise<Product> {
+	const options = makeOptions("POST", newProduct);
+	return await fetch(`${PRODUCTS_URL}`, options).then(handleHttpErrors);
+}
+
+async function updateProduct(updatedProduct: ProductRequest, id: number): Promise<Product> {
+	const options = makeOptions("PUT", updatedProduct);
+	return await fetch(`${PRODUCTS_URL}/${id}`, options).then(handleHttpErrors);
+}
+
+async function getSingleProduct(id: number): Promise<Product> {
+	return await fetch(`${PRODUCTS_URL}/${id}`).then(handleHttpErrors);
+}
 
 
-export {getProducts, deleteProduct}
+
+export {getProducts, deleteProduct, createProduct, updateProduct, getSingleProduct}

@@ -1,13 +1,13 @@
 import Product from "@/models/Product.ts";
 import ProductListItem from "@/components/core/ProductListItem.tsx";
 import { deleteProduct } from "@/services/apiFacade.ts";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/ui/use-toast.ts";
 
 
 type Props = {
 	products: Product[],
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+	setProducts: Dispatch<SetStateAction<Product[]>>;
 }
 
 export default function ProductList({ products, setProducts }: Props) {
@@ -35,10 +35,10 @@ export default function ProductList({ products, setProducts }: Props) {
 	return (
 		<>
 			{products.length ?
-				<div className={"flex flex-wrap justify-start gap-10"}>
+				<div className="grid animate-fade-in grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
 					{products.map(p => <ProductListItem key={p.id} product={p} handleDelete={handleDelete} />)}
 				</div> :
-				<h2>Fetching...</h2>}
+				<h2 className={"text-3xl text-center"}>No matching products found</h2>}
 		</>
 	);
 }
