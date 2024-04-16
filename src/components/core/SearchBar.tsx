@@ -6,15 +6,16 @@ type Props = {
 	value: string,
 	handleChange: (newValue: string) => void;
 	handleReset: () => void;
+	placeholder?: string
 }
 
-export default function SearchBar({ value, handleChange, handleReset }: Props) {
+export default function SearchBar({ value, handleChange, handleReset, placeholder }: Props) {
 
 
 	return (
 		<>
 			<div className={"flex gap-4"}>
-				<Input placeholder={"Product name.."} type="text" value={value} onChange={(e) => handleChange(e.target.value)} />
+				<Input placeholder={placeholder} type="text" value={value} onChange={(e) => handleChange(e.target.value)} />
 				{value && <Button onClick={() => handleReset()}>Reset</Button>}
 			</div>
 		</>

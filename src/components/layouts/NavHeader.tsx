@@ -11,11 +11,17 @@ export default function NavHeader() {
 				<h1 className={"text-center font-bold text-4xl"}>Dagligvare - Ali Mohammad</h1>
 			</div>
 			<nav className={"flex flex-wrap gap-7 bg-red-300 p-2"}>
+				<NavLink to={"/"}>
+					Home
+				</NavLink>
 				<NavLink to={"/products"}>
 					Products
 				</NavLink>
 				<NavLink to={"/deliveries"}>
 					Deliveries
+				</NavLink>
+				<NavLink to={"/vans"}>
+					Vans
 				</NavLink>
 			</nav>
 		</>

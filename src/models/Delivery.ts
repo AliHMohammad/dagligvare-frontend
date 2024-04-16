@@ -6,5 +6,6 @@ export default interface Delivery {
 	deliveryDate: Date,
 	fromWarehouse: string,
 	destination: string,
+	vanId: number | null
 }
 

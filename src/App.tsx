@@ -4,6 +4,8 @@ import ProductListPage from "@/pages/ProductListPage.tsx";
 import { Toaster } from "@/components/ui/toaster.tsx";
 import ProductFormPage from "@/pages/ProductFormPage.tsx";
 import DetailedProductPage from "@/pages/DetailedProductPage.tsx";
+import DeliveriesListPage from "@/pages/DeliveriesListPage.tsx";
+import DeliveryForm from "@/components/forms/DeliveryForm.tsx";
 
 
 function App() {
@@ -17,7 +19,9 @@ function App() {
 						<Route path=":id" element={<DetailedProductPage/>}/>
 					</Route>
 					<Route path="/add/product" element={<ProductFormPage/>}/>
-					<Route path="/deliveries" element={<h2>Deliveries List</h2>}/>
+					<Route path="/add/delivery" element={<DeliveryForm/>}/>
+					<Route path="/deliveries" element={<DeliveriesListPage/>}/>
+					<Route path="/vans" element={<h2>Vans</h2>}/>
 				</Routes>
 			</PageLayout>
 			<Toaster/>

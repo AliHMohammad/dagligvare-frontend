@@ -5,7 +5,8 @@ import Product from "@/models/Product.ts";
 
 const API_URL = "http://localhost:8080"
 
-const PRODUCTS_URL = API_URL + "/products"
+const PRODUCTS_URL = API_URL + "/products";
+const DELIVERIES_URL = API_URL + "/deliveries";
 
 
 export type ProductRequest = {
@@ -14,12 +15,11 @@ export type ProductRequest = {
 	weightInGrams: number
 }
 
-/*
-async function deleteRecipe(id: number): Promise<Recipe> {
- const options = makeOptions("DELETE", null, true);
- return fetch(`${RECIPE_URL}/${id}`, options).then(handleHttpErrors);
- }
-}*/
+export type DeliveryRequest = {
+	delvieryDate: Date,
+	fromWarehouse: string,
+	destination: string
+}
 
 
 async function getProducts(name?: string): Promise<Product[]> {
@@ -47,6 +47,10 @@ async function getSingleProduct(id: number): Promise<Product> {
 	return await fetch(`${PRODUCTS_URL}/${id}`).then(handleHttpErrors);
 }
 
+async function getDeliveries() {
+	return await fetch(DELIVERIES_URL).then(handleHttpErrors);
+}
 
 
-export {getProducts, deleteProduct, createProduct, updateProduct, getSingleProduct}
+
+export {getProducts, deleteProduct, createProduct, updateProduct, getSingleProduct, getDeliveries}

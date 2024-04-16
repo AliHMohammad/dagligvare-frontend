@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Product from "@/models/Product.ts";
 import { getProducts } from "@/services/apiFacade.ts";
-import ProductList from "@/components/core/ProductList.tsx";
+import ProductList from "@/components/core/product/ProductList.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "@/components/core/SearchBar.tsx";
@@ -36,7 +36,7 @@ export default function ProductListPage() {
 		<>
 			<h1 className={"text-center"}>Products</h1>
 			<div className={"my-6 flex flex-wrap justify-center gap-4 px-8 sm:justify-between"}>
-				<SearchBar value={searchValue} handleChange={handleChange} handleReset={handleReset}/>
+				<SearchBar value={searchValue} handleChange={handleChange} handleReset={handleReset} placeholder={"Product name.."}/>
 				<Button  onClick={() => navigate("/add/product")}>New Product</Button>
 			</div>
 			{products ? <ProductList products={products} setProducts={setProducts as Dispatch<SetStateAction<Product[]>>}/> : <h2>Fetching...</h2>}

@@ -1,5 +1,5 @@
 import Product from "@/models/Product.ts";
-import ProductListItem from "@/components/core/ProductListItem.tsx";
+import ProductListItem from "@/components/core/product/ProductListItem.tsx";
 import { deleteProduct } from "@/services/apiFacade.ts";
 import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/ui/use-toast.ts";
@@ -17,7 +17,7 @@ export default function ProductList({ products, setProducts }: Props) {
 		deleteProduct(productToDelete.id)
 			.then(() => {
 				toast({
-					title: "Product deleted!",
+					title: "product deleted!",
 					description: productToDelete.name + " has been deleted."
 				});
 				setProducts((prev) => prev.filter(p => p.id !== productToDelete.id));

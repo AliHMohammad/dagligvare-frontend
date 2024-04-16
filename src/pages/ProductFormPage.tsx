@@ -12,7 +12,7 @@ export default function ProductFormPage() {
 			updateProduct(productRequest, id)
 				.then((p) => {
 					toast({
-						title: "Product updated!",
+						title: "product updated!",
 						description: p.name + " has been updated.",
 					});
 					//TODO: Skal måske ændres
@@ -31,7 +31,7 @@ export default function ProductFormPage() {
 			: createProduct(productRequest)
 				.then((p) => {
 					toast({
-						title: "Product created!",
+						title: "product created!",
 						description: p.name + " has been created.",
 					});
 					//TODO: Skal måske ændres
