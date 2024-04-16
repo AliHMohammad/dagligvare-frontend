@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Delivery from "@/models/Delivery.ts";
-import { getDeliveries } from "@/services/apiFacade.ts";
+import { assignDeliveryToVanById, getDeliveries } from "@/services/apiFacade.ts";
 import DeliveryTable from "@/components/core/delivery/DeliveryTable.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Link } from "react-router-dom";
 import AssignToVanForm from "@/components/forms/AssignToVanForm.tsx";
+import { toast } from "@/components/ui/use-toast.ts";
 
 
 export default function DeliveriesListPage() {
@@ -14,16 +15,38 @@ export default function DeliveriesListPage() {
 	console.log(selectedDelivery);
 
 	useEffect(() => {
+
 		getDeliveries()
 			.then((d) => setDeliveries(d))
-			.catch((e:Error) => {
+			.catch((e: Error) => {
 				console.log(e.message);
-			})
-	}, []);
+			});
+
+
+	}, [selectedDelivery]);
 
 	const handleSelected = (delivery: Delivery | null) => {
 		setSelectedDelivery(delivery);
-	}
+	};
+
+	const handleSubmitForm = (deliveryId: number, vanId: number) => {
+
+		assignDeliveryToVanById(deliveryId, vanId)
+			.then(() => {
+				toast({
+					title: "Delivery assigned to van!",
+					description: "Delivery with id " + deliveryId + " assigned to van!",
+				});
+				setSelectedDelivery(null);
+			})
+			.catch(() => {
+				toast({
+					title: "Something went wrong!",
+					description: "Could not assign delivery to van.",
+					variant: "destructive"
+				});
+			})
+	};
 
 
 	return (
@@ -32,14 +55,14 @@ export default function DeliveriesListPage() {
 			<h2 className={"text-center"}>Deliveries</h2>
 			<div>
 				<Link to={"/add/delivery"}>
-					<Button>Opret ny</Button>
+					<Button>Add Delivery</Button>
 				</Link>
 			</div>
 			<div className={"flex flex-wrap flex-row justify-evenly"}>
 				<DeliveryTable deliveries={deliveries} handleSelected={handleSelected} />
-				<AssignToVanForm delivery={selectedDelivery} handleSelected={handleSelected}/>
+				<AssignToVanForm deliveryId={selectedDelivery?.id} handleSubmitForm={handleSubmitForm} />
 			</div>
 
 		</>
-	)
+	);
 }

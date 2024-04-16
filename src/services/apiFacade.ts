@@ -73,6 +73,15 @@ async function getVans(): Promise<Van[]> {
 	return await fetch(VANS_URL).then(handleHttpErrors);
 }
 
+async function assignDeliveryToVanById(deliveryId: number, vanId: number): Promise<Van> {
+	const options = makeOptions("PATCH");
+	return await fetch(`${VANS_URL}/${vanId}/deliveries/${deliveryId}`, options).then(handleHttpErrors);
+}
+
+async function getCurrentWeightForVanById(vanId: number): Promise<number> {
+	return await fetch(`${VANS_URL}/${vanId}/weight`).then(handleHttpErrors);
+}
+
 
 
 export {
@@ -85,5 +94,7 @@ export {
 	createDelivery,
 	getSingleDelivery,
 	getDeliveriesByVanId,
-	getVans
+	getVans,
+	getCurrentWeightForVanById,
+	assignDeliveryToVanById
 }
