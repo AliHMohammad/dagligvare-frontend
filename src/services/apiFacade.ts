@@ -1,6 +1,7 @@
 
 import  { makeOptions,handleHttpErrors } from "./fetchUtils";
 import Product from "@/models/Product.ts";
+import Delivery from "@/models/Delivery.ts";
 
 
 const API_URL = "http://localhost:8080"
@@ -16,7 +17,7 @@ export type ProductRequest = {
 }
 
 export type DeliveryRequest = {
-	delvieryDate: Date,
+	deliveryDate: Date,
 	fromWarehouse: string,
 	destination: string
 }
@@ -47,10 +48,15 @@ async function getSingleProduct(id: number): Promise<Product> {
 	return await fetch(`${PRODUCTS_URL}/${id}`).then(handleHttpErrors);
 }
 
-async function getDeliveries() {
+async function getDeliveries(): Promise<Delivery[]> {
 	return await fetch(DELIVERIES_URL).then(handleHttpErrors);
+}
+
+async function createDelivery(newDelivery: DeliveryRequest):Promise<Delivery> {
+	const options = makeOptions("POST", newDelivery);
+	return await fetch(DELIVERIES_URL, options).then(handleHttpErrors);
 }
 
 
 
-export {getProducts, deleteProduct, createProduct, updateProduct, getSingleProduct, getDeliveries}
+export {getProducts, deleteProduct, createProduct, updateProduct, getSingleProduct, getDeliveries, createDelivery}
