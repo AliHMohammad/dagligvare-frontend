@@ -8,7 +8,7 @@ import DeliveryForm from "@/components/forms/DeliveryForm.tsx";
 export default function DeliveryFormPage() {
 	const navigate = useNavigate();
 	
-	const handleSubmitDeliveryForm = (request: DeliveryRequest) => {
+	const onSubmit = (request: DeliveryRequest) => {
 		createDelivery(request)
 			.then((newDelivery) => {
 				toast({
@@ -29,7 +29,7 @@ export default function DeliveryFormPage() {
 	
 	return (
 		<>
-			<DeliveryForm handleSubmitDeliveryForm={handleSubmitDeliveryForm}/>
+			<DeliveryForm onSubmit={onSubmit}/>
 		</>
 	)
 }

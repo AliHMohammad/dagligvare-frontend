@@ -1,4 +1,9 @@
 
 
 
-//TODO: Lav van Model. Kræver muligvis DTO i backend.
+
+export default interface Van {
+	id: number,
+	model: string,
+	capacity: number
+}

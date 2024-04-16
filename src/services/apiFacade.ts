@@ -2,12 +2,15 @@
 import  { makeOptions,handleHttpErrors } from "./fetchUtils";
 import Product from "@/models/Product.ts";
 import Delivery from "@/models/Delivery.ts";
+import DetailedDelivery from "@/models/DetailedDelivery.ts";
+import Van from "@/models/Van.ts";
 
 
 const API_URL = "http://localhost:8080"
 
 const PRODUCTS_URL = API_URL + "/products";
 const DELIVERIES_URL = API_URL + "/deliveries";
+const VANS_URL = API_URL + "/vans";
 
 
 export type ProductRequest = {
@@ -58,5 +61,29 @@ async function createDelivery(newDelivery: DeliveryRequest):Promise<Delivery> {
 }
 
 
+async function getSingleDelivery(id: number): Promise<DetailedDelivery> {
+	return await fetch(DELIVERIES_URL + "/" + id).then(handleHttpErrors);
+}
 
-export {getProducts, deleteProduct, createProduct, updateProduct, getSingleProduct, getDeliveries, createDelivery}
+async function getDeliveriesByVanId(vanId: number): Promise<DetailedDelivery[]> {
+	return await fetch(`${VANS_URL}/${vanId}/deliveries`).then(handleHttpErrors);
+}
+
+async function getVans(): Promise<Van[]> {
+	return await fetch(VANS_URL).then(handleHttpErrors);
+}
+
+
+
+export {
+	getProducts,
+	deleteProduct,
+	createProduct,
+	updateProduct,
+	getSingleProduct,
+	getDeliveries,
+	createDelivery,
+	getSingleDelivery,
+	getDeliveriesByVanId,
+	getVans
+}

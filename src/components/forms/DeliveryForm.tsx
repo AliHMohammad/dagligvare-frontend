@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/popover"
 
 type Props = {
-	handleSubmitDeliveryForm: (request: DeliveryRequest) => void;
+	onSubmit: (request: DeliveryRequest) => void;
 }
 
-export default function DeliveryForm({handleSubmitDeliveryForm}: Props) {
+export default function DeliveryForm({onSubmit}: Props) {
 	const [warehouse, setWarehouse] = useState("");
 	const [destination, setDestination] = useState("");
 	const [deliveryDate, setDeliveryDate] = React.useState<Date>()
@@ -33,7 +33,7 @@ export default function DeliveryForm({handleSubmitDeliveryForm}: Props) {
 
 		console.log(deliveryRequest);
 
-		handleSubmitDeliveryForm(deliveryRequest);
+		onSubmit(deliveryRequest);
 	}
 
 	return (

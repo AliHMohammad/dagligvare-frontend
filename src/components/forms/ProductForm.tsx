@@ -18,7 +18,7 @@ export default function ProductForm({handleSubmitForm}: Props) {
 	const [weight, setWeight] = useState(productToEdit?.weightInGrams || "");
 
 
-	const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const productRequest: ProductRequest = {
@@ -33,7 +33,7 @@ export default function ProductForm({handleSubmitForm}: Props) {
 		<>
 			<h2 className={"text-center"}>Product form</h2>
 			<div className={"flex justify-center"}>
-				<form className={"bg-green-300 w-80 px-10 py-5 flex flex-col gap-3"}>
+				<form className={"bg-green-300 w-80 px-10 py-5 flex flex-col gap-3"} onSubmit={handleSubmit}>
 					<div>
 						<Label htmlFor="name">Name:</Label>
 						<Input type="text" value={name} onChange={e => setName(e.target.value)} />
@@ -50,7 +50,7 @@ export default function ProductForm({handleSubmitForm}: Props) {
 					</div>
 
 					<div className={"flex justify-center mt-7"}>
-						<Button onClick={(e) => handleSubmit(e)}>Submit</Button>
+						<Button type={"submit"}>Submit</Button>
 					</div>
 				</form>
 			</div>

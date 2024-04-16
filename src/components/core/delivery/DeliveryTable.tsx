@@ -4,14 +4,15 @@ import DeliveryTableRow from "@/components/core/delivery/DeliveryTableRow.tsx";
 
 type Props = {
 	deliveries: Delivery[] | null
+	handleSelected: (delivery: Delivery) => void;
 }
 
-export default function DeliveryTable({deliveries}: Props) {
+export default function DeliveryTable({deliveries, handleSelected}: Props) {
 
 
 	return (
 		<>
-			<table className={"mx-auto mt-7"}>
+			<table>
 				<thead>
 					<tr>
 						<td className="px-4 text-center">Id</td>
@@ -22,7 +23,7 @@ export default function DeliveryTable({deliveries}: Props) {
 				</thead>
 				<tbody>
 				{deliveries &&
-					deliveries.map((d) => <DeliveryTableRow key={d.id} delivery={d}/>)
+					deliveries.map((d) => <DeliveryTableRow key={d.id} delivery={d} handleSelected={handleSelected}/>)
 				}
 				</tbody>
 			</table>
