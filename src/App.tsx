@@ -8,6 +8,8 @@ import DeliveriesListPage from "@/pages/DeliveriesListPage.tsx";
 import DeliveryForm from "@/components/forms/DeliveryForm.tsx";
 import DeliveryFormPage from "@/pages/DeliveryFormPage.tsx";
 import DetailedDeliveryPage from "@/pages/DetailedDeliveryPage.tsx";
+import VansListPage from "@/pages/VansListPage.tsx";
+import DetailedVanPage from "@/pages/DetailedVanPage.tsx";
 
 
 function App() {
@@ -26,7 +28,10 @@ function App() {
 						<Route index element={<DeliveriesListPage/>}/>
 						<Route path=":id" element={<DetailedDeliveryPage/>}/>
 					</Route>
-					<Route path="/vans" element={<h2>Vans</h2>}/>
+					<Route path="/vans">
+						<Route index element={<VansListPage/>}/>
+						<Route path=":id" element={<DetailedVanPage/>}/>
+					</Route>
 				</Routes>
 			</PageLayout>
 			<Toaster/>

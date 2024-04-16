@@ -48,6 +48,8 @@ export default function AssignToVanForm({ deliveryId, handleSubmitForm }: Props)
 	}, [deliveryId]);
 
 	useEffect(() => {
+		if (!selectedVanId) return;
+
 		getCurrentWeightForVanById(Number(selectedVanId))
 			.then((w) => setCurrentVanWeight(w))
 			.catch(() => {
@@ -67,16 +69,11 @@ export default function AssignToVanForm({ deliveryId, handleSubmitForm }: Props)
 	const deliveryWeight = selectedDelivery?.products
 		.reduce((acc, item) => acc + ((item.product.weightInGrams / 1000) * item.quantity), 0) || null;
 
-	console.log(selectedDelivery?.products);
-
 	let isOverweight = false;
 
 	const van = vans.find((v) => v.id == Number(selectedVanId));
 
-
-
 	if (deliveryWeight && van) {
-		console.log("checking");
 		isOverweight = currentVanWeight! + deliveryWeight > van.capacity;
 	}
 

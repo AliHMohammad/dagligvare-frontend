@@ -31,8 +31,6 @@ export default function DeliveryForm({onSubmit}: Props) {
 			fromWarehouse: warehouse,
 		}
 
-		console.log(deliveryRequest);
-
 		onSubmit(deliveryRequest);
 	}
 

@@ -12,8 +12,6 @@ export default function DeliveriesListPage() {
 	const [deliveries, setDeliveries] = useState<null | Delivery[]>(null);
 	const [selectedDelivery, setSelectedDelivery] = useState<null | Delivery>(null);
 
-	console.log(selectedDelivery);
-
 	useEffect(() => {
 
 		getDeliveries()
@@ -53,7 +51,7 @@ export default function DeliveriesListPage() {
 		<>
 
 			<h2 className={"text-center"}>Deliveries</h2>
-			<div>
+			<div className={"flex justify-end my-6 flex-wrap gap-4 px-8 "}>
 				<Link to={"/add/delivery"}>
 					<Button>Add Delivery</Button>
 				</Link>

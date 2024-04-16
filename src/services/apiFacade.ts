@@ -28,7 +28,6 @@ export type DeliveryRequest = {
 
 async function getProducts(name?: string): Promise<Product[]> {
 	const url = name ? PRODUCTS_URL + `?name=${name}` : PRODUCTS_URL;
-	console.log(url);
 	return await fetch(url).then(handleHttpErrors);
 }
 
@@ -65,7 +64,7 @@ async function getSingleDelivery(id: number): Promise<DetailedDelivery> {
 	return await fetch(DELIVERIES_URL + "/" + id).then(handleHttpErrors);
 }
 
-async function getDeliveriesByVanId(vanId: number): Promise<DetailedDelivery[]> {
+async function getDeliveriesByVanId(vanId: number): Promise<Delivery[]> {
 	return await fetch(`${VANS_URL}/${vanId}/deliveries`).then(handleHttpErrors);
 }
 
