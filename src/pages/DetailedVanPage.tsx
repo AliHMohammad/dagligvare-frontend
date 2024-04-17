@@ -31,7 +31,7 @@ export default function DetailedVanPage() {
 					<p>Capacity: {van.capacity} kg.</p>
 				</div>
 				<div>
-					<p>Products:</p>
+					<p>Deliveries:</p>
 					{deliveries && deliveries.map((delivery) => (
 						<div className={"my-5"}>
 							<p>Id: {delivery.id}</p>

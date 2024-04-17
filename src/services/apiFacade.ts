@@ -25,6 +25,11 @@ export type DeliveryRequest = {
 	destination: string
 }
 
+export type UpdateDeliveryRequest = {
+	quantity: number,
+	productId: number
+}
+
 
 async function getProducts(name?: string): Promise<Product[]> {
 	const url = name ? PRODUCTS_URL + `?name=${name}` : PRODUCTS_URL;
@@ -64,6 +69,11 @@ async function getSingleDelivery(id: number): Promise<DetailedDelivery> {
 	return await fetch(DELIVERIES_URL + "/" + id).then(handleHttpErrors);
 }
 
+async function updateDeliveryByIdWithProducts(request: UpdateDeliveryRequest[], id: number) {
+	const options = makeOptions("PATCH", request);
+	return await fetch(DELIVERIES_URL + "/" + id, options).then(handleHttpErrors);
+}
+
 async function getDeliveriesByVanId(vanId: number): Promise<Delivery[]> {
 	return await fetch(`${VANS_URL}/${vanId}/deliveries`).then(handleHttpErrors);
 }
@@ -95,5 +105,6 @@ export {
 	getDeliveriesByVanId,
 	getVans,
 	getCurrentWeightForVanById,
-	assignDeliveryToVanById
+	assignDeliveryToVanById,
+	updateDeliveryByIdWithProducts
 }

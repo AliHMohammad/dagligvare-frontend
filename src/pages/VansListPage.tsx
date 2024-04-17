@@ -21,7 +21,7 @@ export default function VansListPage() {
 				{vans && vans.map(van => (
 					<li key={van.id}>
 						<Link to={String(van.id)} state={van}>
-							<span className={"font-bold cursor-pointer"}>{van.model}</span>
+							<span className={"text-blue-600 cursor-pointer"}>{van.model}</span>
 						</Link>, {van.capacity} kg.
 					</li>
 				))}

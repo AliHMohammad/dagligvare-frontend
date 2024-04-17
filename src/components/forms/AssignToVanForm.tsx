@@ -67,7 +67,7 @@ export default function AssignToVanForm({ deliveryId, handleSubmitForm }: Props)
 	};
 
 	const deliveryWeight = selectedDelivery?.products
-		.reduce((acc, item) => acc + ((item.product.weightInGrams / 1000) * item.quantity), 0) || null;
+		.reduce((acc, item) => acc + ((item.product.weightInGrams / 1000) * item.quantity), 0) || 0;
 
 	let isOverweight = false;
 
@@ -82,7 +82,7 @@ export default function AssignToVanForm({ deliveryId, handleSubmitForm }: Props)
 			<div>
 				<h2 className={"text-center"}>Assign to van</h2>
 				<div className={"flex justify-center"}>
-					<form className={"bg-yellow-200 w-80 px-10 py-5 flex flex-col gap-3"} onSubmit={handleSubmit}>
+					<form className={`${deliveryId ? "bg-blue-200" : "bg-yellow-200"} w-80 px-10 py-5 flex flex-col gap-3`} onSubmit={handleSubmit}>
 						<div>
 							<p>Selected delivery Id: <span className={"px-2"}>{deliveryId}</span></p>
 							<p>Weight: <span className={`px-2 ${isOverweight ? "text-red-600" : "text-green-500"}`}>{deliveryWeight}</span></p>
