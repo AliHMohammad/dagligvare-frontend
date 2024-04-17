@@ -10,7 +10,6 @@ export default function DetailedVanPage() {
 	const van = useLocation().state as Van;
 	const [deliveries, setDeliveries] = useState<null | Delivery[]>(null)
 
-	console.log(van);
 
 	useEffect(() => {
 		getDeliveriesByVanId(van.id)
@@ -33,7 +32,7 @@ export default function DetailedVanPage() {
 				<div>
 					<p>Deliveries:</p>
 					{deliveries && deliveries.map((delivery) => (
-						<div className={"my-5"}>
+						<div key={delivery.id} className={"my-5"}>
 							<p>Id: {delivery.id}</p>
 							<p>Delivery date: {delivery.deliveryDate.toString()}</p>
 							<p>From {delivery.fromWarehouse} to destination: {delivery.destination}</p>

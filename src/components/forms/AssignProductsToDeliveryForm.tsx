@@ -63,8 +63,6 @@ export default function AssignProductsToDeliveryForm({onSubmit}: Props) {
 		setSelectedProductId("");
 	}
 
-	console.log(savedProducts);
-
 	return (
 		<>
 			<div className={"flex flex-wrap flex-row gap-10"}>

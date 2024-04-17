@@ -95,7 +95,7 @@ export default function AssignToVanForm({ deliveryId, handleSubmitForm }: Props)
 									<SelectValue placeholder="Select van for the delivery" />
 								</SelectTrigger>
 								<SelectContent>
-									{vans && vans.map((v) => <SelectItem value={String(v.id)}  >{v.model}, {v.capacity} kg.</SelectItem>)}
+									{vans && vans.map((v) => <SelectItem key={v.id} value={String(v.id)}  >{v.model}, {v.capacity} kg.</SelectItem>)}
 								</SelectContent>
 								<p>Current weight in kg: <span className={isOverweight ? "text-red-600" : "text-green-500"}>{currentVanWeight}</span></p>
 							</Select>

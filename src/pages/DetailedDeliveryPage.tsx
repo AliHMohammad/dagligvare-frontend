@@ -21,7 +21,7 @@ export default function DetailedDeliveryPage() {
 	}, [id]);
 
 	const onSubmit = (request: UpdateDeliveryRequest[]) => {
-		console.log(request);
+
 		updateDeliveryByIdWithProducts(request, delivery!.id)
 			.then(() => {
 				toast({
